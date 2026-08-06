@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#7A2331">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Feria de Ciencias — Programa de Proyectos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  :root{
+    --bg:#FBFAF7;
+    --ink:#1B2436;
+    --muted:#6E7686;
+    --muted-2:#94A0AC;
+    --rule:#DCDFE4;
+    --rule-strong:#C7CCD3;
+    --accent:#7A2331;
+    --accent-tint:#F5EAEB;
+    --font-serif:'Source Serif 4', serif;
+    --font-sans:'Inter', sans-serif;
+  }
+  
+
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  body{
+    margin:0;
+    background-color:var(--bg);
+    background-image:radial-gradient(rgba(27,36,54,0.08) 1px, transparent 1.4px);
+    background-size:22px 22px;
+    color:var(--ink);
+    font-family:var(--font-sans);
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:env(safe-area-inset-bottom);
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  *:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .wrap{
+    max-width:980px; margin:0 auto;
+    padding-left:max(32px, env(safe-area-inset-left));
+    padding-right:max(32px, env(safe-area-inset-right));
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(251,250,247,0.94);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+    transition:box-shadow .25s ease;
+  }
+  .nav.scrolled{ box-shadow:0 2px 18px rgba(27,36,54,0.08); }
+  .nav-inner{
+    max-width:980px; margin:0 auto; padding:20px 32px;
+    padding-left:max(32px, env(safe-area-inset-left));
+    padding-right:max(32px, env(safe-area-inset-right));
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:var(--font-serif); font-weight:600; font-size:1.02rem;
+    letter-spacing:0.01em; color:var(--ink);
+  }
+  /* ---------- HERO ---------- */
+  .hero{padding:100px 0 84px; text-align:center; position:relative; overflow:hidden;}
+  .hero-orbit{
+    position:absolute; top:52%; left:50%; transform:translate(-50%,-50%);
+    width:440px; height:440px; z-index:0; pointer-events:none; opacity:0.9;
+  }
+  .hero .wrap{ position:relative; z-index:1; }
+  .eyebrow{
+    font-family:var(--font-sans); font-size:0.76rem; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 22px; font-weight:600;
+  }
+  .eyebrow::before{
+    content:""; display:inline-block; width:6px; height:6px; border-radius:50%;
+    background:var(--accent); margin-right:9px; vertical-align:middle;
+  }
+  .eyebrow .blank{
+    color:var(--muted-2); font-weight:400; letter-spacing:0.05em;
+  }
+  h1.title{
+    font-family:var(--font-serif); font-weight:600;
+    font-size:clamp(2.6rem, 6vw, 4.2rem);
+    line-height:1.08; letter-spacing:-0.01em;
+    margin:0; color:var(--ink);
+  }
+  .rule-orn{
+    width:120px; margin:30px auto 0; height:9px;
+    border-top:1px solid var(--rule-strong);
+    position:relative;
+  }
+  .rule-orn::after{
+    content:""; position:absolute; top:5px; left:50%; transform:translateX(-50%);
+    width:40px; height:1px; background:var(--rule-strong);
+  }
+  .tagline{
+    font-family:var(--font-serif); font-style:italic; font-weight:400;
+    font-size:1.15rem; line-height:1.65; color:var(--muted);
+    max-width:520px; margin:32px auto 0;
+  }
+  .count-line{
+    margin-top:26px; font-size:0.78rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--muted-2); font-weight:600;
+  }
+
+  /* ---------- SECTION HEADER ---------- */
+  .section-head{padding:0 0 12px; border-top:1px solid var(--rule); padding-top:60px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  h2.section-title{
+    font-family:var(--font-serif); font-weight:600;
+    font-size:clamp(1.8rem, 3.5vw, 2.35rem); margin:0 0 14px; color:var(--ink);
+  }
+  .section-sub{color:var(--muted); max-width:560px; line-height:1.65; margin:0 0 8px;
+    font-size:0.98rem;}
+
+  /* ---------- ENTRIES ---------- */
+  .entries{padding-bottom:100px;}
+  .entry{
+    position:relative;
+    display:grid; grid-template-columns:150px 1fr; gap:44px;
+    padding:44px 0; border-top:1px solid var(--rule);
+    opacity:0; transform:translateY(14px);
+    cursor:pointer;
+    transition:opacity .5s ease, transform .5s ease, background-color .2s ease;
+  }
+  .entry.in-view{opacity:1; transform:translateY(0);}
+  .entries .entry:last-child{border-bottom:1px solid var(--rule);}
+  .entry:hover, .entry:focus-visible{ background-color:var(--accent-tint); }
+  .entry::after{
+    content:""; position:absolute; left:-20px; top:0; bottom:0; width:3px;
+    background:var(--accent); transform:scaleY(0); transform-origin:top;
+    transition:transform .25s ease;
+  }
+  .entry:hover::after, .entry:focus-visible::after{ transform:scaleY(1); }
+
+  .entry-hint{
+    position:absolute; top:44px; right:0;
+    font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--accent); opacity:0; transform:translateX(-6px);
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .entry:hover .entry-hint, .entry:focus-visible .entry-hint{ opacity:1; transform:translateX(0); }
+
+  .entry-badge{
+    width:60px; height:60px; border-radius:50%;
+    border:1px solid var(--rule-strong);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:14px; transition:border-color .2s ease;
+  }
+  .entry:hover .entry-badge, .entry:focus-visible .entry-badge{ border-color:var(--accent); }
+  .entry-badge-num{
+    font-family:var(--font-serif); font-weight:600; font-size:1.1rem; color:var(--accent);
+  }
+  .entry-number-label{
+    font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--muted-2); margin-bottom:16px; display:block;
+  }
+  .entry-photo{
+    height:108px; border:1px solid var(--rule-strong);
+    background:var(--accent-tint);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:6px;
+  }
+  .entry-photo svg{width:24px; height:24px; opacity:0.5; color:var(--accent);}
+  .entry-photo span{
+    font-size:0.62rem; letter-spacing:0.05em; color:var(--muted);
+    text-transform:uppercase; text-align:center; padding:0 6px;
+  }
+
+  .entry-title{
+    font-family:var(--font-serif); font-style:italic; font-weight:400;
+    font-size:1.3rem; color:var(--muted);
+    margin:0 0 22px; padding-bottom:12px;
+    border-bottom:1px solid var(--rule-strong);
+  }
+
+  .field-row{display:flex; gap:40px; margin-bottom:26px; flex-wrap:wrap;}
+  .field{flex:1; min-width:160px;}
+  .field-label{
+    display:block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--muted-2); margin-bottom:8px;
+  }
+  .field-blank{border-bottom:1px solid var(--rule-strong); height:20px;}
+
+  .summary-lines .field-label{margin-bottom:14px;}
+  .summary-lines .field-blank{margin-bottom:16px;}
+  .summary-lines .field-blank:last-child{width:70%; margin-bottom:0;}
+
+  .entry-members{margin-top:26px;}
+  .entry-3d{margin-top:26px;}
+
+  /* ---------- FOCUS OVERLAY ---------- */
+  .focus-overlay{
+    position:fixed; inset:0; z-index:100;
+    background:rgba(27,36,54,0.5);
+    display:flex; align-items:flex-start; justify-content:center;
+    padding:64px max(24px, env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .3s ease;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+  .focus-overlay.open{ opacity:1; visibility:visible; pointer-events:auto; }
+  .focus-panel{
+    background:#fff; width:100%; max-width:800px;
+    border:1px solid var(--rule);
+    padding:48px 56px 64px;
+    position:relative;
+    transform:translateY(16px);
+    transition:transform .35s ease;
+    box-shadow:0 30px 70px rgba(27,36,54,0.28);
+  }
+  .focus-overlay.open .focus-panel{ transform:translateY(0); }
+  .focus-close{
+    background:none; border:none; cursor:pointer;
+    font-family:var(--font-sans); font-size:0.78rem; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted);
+    margin:-12px 0 24px -6px; padding:12px 6px;
+    display:inline-flex; align-items:center; min-height:44px;
+    transition:color .2s ease;
+  }
+  .focus-close:hover{ color:var(--accent); }
+  .focus-eyebrow{ margin-bottom:8px; }
+
+  .focus-entry{
+    display:grid; grid-template-columns:210px 1fr; gap:52px; margin-top:28px;
+  }
+  .focus-entry .entry-badge{ width:88px; height:88px; }
+  .focus-entry .entry-badge-num{ font-size:1.55rem; }
+  .focus-entry .entry-photo{ height:210px; }
+  .focus-entry .entry-title{ font-size:1.7rem; margin-bottom:30px; padding-bottom:16px; }
+  .focus-entry .field-blank{ height:26px; }
+  .focus-entry .summary-lines .field-blank{ margin-bottom:22px; }
+
+  @media (max-width:640px){
+    .hero-orbit{width:320px; height:320px;}
+    .entry{grid-template-columns:1fr; gap:20px;}
+    .entry-photo{height:130px;}
+    .entry-hint{display:none;}
+    .field-row{gap:24px;}
+    .focus-panel{padding:36px 22px 48px;}
+    .focus-entry{grid-template-columns:1fr; gap:24px;}
+  }
+
+  @media (max-height:700px){
+    .focus-overlay{padding-top:28px; padding-bottom:28px;}
+    .focus-panel{padding-top:32px; padding-bottom:36px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .entry, .focus-overlay, .focus-panel{transition:none !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- PORTADA ---------- */
+  .oculto{ display:none !important; }
+  .portada{
+    position:fixed; inset:0; z-index:300;
+    background-color:var(--bg);
+    background-image:radial-gradient(rgba(27,36,54,0.08) 1px, transparent 1.4px);
+    background-size:22px 22px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:24px;
+  }
+  .portada .eyebrow{ margin-bottom:22px; }
+  .portada h1.title{ margin-bottom:0; }
+  .portada .tagline{ margin-bottom:44px; }
+  .btn-entrar{
+    font-family:var(--font-sans); font-weight:600; font-size:0.85rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:#fff;
+    background:var(--accent); border:none; cursor:pointer;
+    padding:16px 40px; min-height:44px;
+    transition:opacity .2s ease;
+  }
+  .btn-entrar:hover, .btn-entrar:focus-visible{ opacity:0.88; }
+</style>
+</head>
+<body>
+
+  <div class="portada" id="portada">
+    <p class="eyebrow">Instituto San Isidro</p>
+    <h1 class="title">Feria de Ciencias</h1>
+    <div class="rule-orn"></div>
+    <p class="tagline">En memoria de nuestro Maestro Patricio Moradel</p>
+    <p class="tagline">30 Años de Servicio</p>
+    <p class="tagline">Descubre La Feria</p>
+    <button class="btn-entrar" id="btnEntrar" type="button">Comienza El Recorrido</button>
+  </div>
+
+  <div class="oculto" id="sitio">
+
+  <nav class="nav" id="siteNav">
+    <div class="nav-inner">
+      <div class="brand">Feria de Ciencias</div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <svg class="hero-orbit" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+      <circle cx="200" cy="200" r="5" fill="var(--accent)" opacity="0.6"/>
+      <ellipse cx="200" cy="200" rx="168" ry="64" fill="none" stroke="var(--rule-strong)" stroke-width="1"/>
+      <ellipse cx="200" cy="200" rx="168" ry="64" fill="none" stroke="var(--rule-strong)" stroke-width="1" transform="rotate(60 200 200)"/>
+      <ellipse cx="200" cy="200" rx="168" ry="64" fill="none" stroke="var(--rule-strong)" stroke-width="1" transform="rotate(120 200 200)"/>
+      <circle cx="366" cy="200" r="4" fill="var(--accent)" opacity="0.7"/>
+      <circle cx="366" cy="200" r="4" fill="var(--accent)" opacity="0.55" transform="rotate(60 200 200)"/>
+      <circle cx="366" cy="200" r="4" fill="var(--accent)" opacity="0.55" transform="rotate(120 200 200)"/>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">Instituto San Isidro</p>
+      <h1 class="title">Feria de Ciencias</h1>
+      <div class="rule-orn"></div>
+      <p class="count-line">15 proyectos participantes</p>
+    </div>
+  </header>
+
+  <main class="wrap" id="proyectos">
+    <div class="section-head">
+      <p class="eyebrow">Relación de proyectos</p>
+      <h2 class="section-title">Proyectos participantes</h2>
+      <p class="section-sub">La Feria Estudiantil Del Instituto San Isidro Es un Espacio Donde la innovacion y el talento estudiantil florecen para construir el mañana. Hoy, cada idea presentada cobra un sentido aún mas profundo al rendir tributo a la memoria de nuestro queridisimo Maestro Patricio Moradel y su 30 Años de su impecable servicio, vocacion y sabiduria. Su legado de enseñanza no muere;Vive y se transforma en cada uno de estos Proyectos.</p>
+    </div>
+
+    <div class="entries">
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 01 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">01</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">MultiClean para uso en el Hogar</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Finanzas</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Brisia Arzu - Martha Martinez - Angela Chirinos - Carlos Matute - Briana Rosales - Scarlet Pavon</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-01.glb" alt="Modelo 3D del proyecto 01" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 02 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">02</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Entre Placas y Microscopios;Mas alla de lo Visible</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Bioquimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/BCH/Informatica </div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Valery Canales - Nasly Borjas - Liliana Hernandez - Danna chiessa - Allison Lainez(INF) - Andrea Lobo</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-02.glb" alt="Modelo 3D del proyecto 02" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 03 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">03</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Exfoliante Corporal</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Informatica </div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Eda Andrew - Cristian León - Emely Torres - Annie Salgado - Kristal Escobar - Jessyca Carías</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-03.glb" alt="Modelo 3D del proyecto 03" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 04 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">04</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Jabon para la Piel</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Informatica/BCH</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Dalila Andada - Emir Galeas - Julio Martinez - Melany Padilla - Elizabeth Rosales - Rosa Abigail(BCH)</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-04.glb" alt="Modelo 3D del proyecto 04" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 05 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">05</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Indicador de PH (Phimetro)</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Medicina</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Informatica</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Brechy Reyes - Sara Diaz - Jillian Meja - Wilfredo Padilla</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-05.glb" alt="Modelo 3D del proyecto 05" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 06 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">06</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Biogás</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Finanzas</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Anyeli Calix - Bianca Escalante - Cristel Damas - Iima Nuñez - Emely Molina - Victoria Posas</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-06.glb" alt="Modelo 3D del proyecto 06" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 07 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">07</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Fresh Skin (Crema Exfoliante)</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Finanzas/BCH</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Audy Ramos - Kendra Matute - Kristel Lopez - Nelsy Cruz - Valeria Martinez - Elisa Fuentes(BCH)</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-07.glb" alt="Modelo 3D del proyecto 07" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 08 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">08</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">PurAire (Aromatizante)</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Finanzas</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Alonso Cruz - Samuel Fiallos - Esther Perez - Odair Alvarado - Jadie Torres - Erick Flores</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-08.glb" alt="Modelo 3D del proyecto 08" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 09 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">09</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Frituras Reciclas de cascaras de Fruta</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Alimentos</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Informatica/BCH</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Bayron Acosta - Luis Irias - Donelly Valerio - Denilson Melendez - Diego Padilla - Edil Salgado(BCH)</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-09.glb" alt="Modelo 3D del proyecto 09" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 10 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">10</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Vela´s Aromaticas</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/BCH</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Maxwell Fernandez - Maverick Coello - Jhoan Rodriguez - Ian Melendez - Regner Melgar - Denis Garcia</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-10.glb" alt="Modelo 3D del proyecto 10" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 11 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">11</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Perfume Casero</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/BCH</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Leyla Stewart - Insieni Alvarez - Andrea Uravia - Ceity Castillo - Ashley Estrada - Ruby Railey</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-11.glb" alt="Modelo 3D del proyecto 11" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 12 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">12</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Kit de Maquillaje Organico</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Quimica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/BCH</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Lueth Hernandéz - Maria Pance - Jessica Rivera - Evoleth Crúz - Genesis Paola - Anny Martinez - Allan Artica</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-12.glb" alt="Modelo 3D del proyecto 12" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 13 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">13</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Sistema de riego Energetico</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Ecológica</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/BCH/Informatica</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Cesar Puerto - Axel Martinez - Osman Perez - Andrea Mireya - Jose Tablada(INF) - Rachel Lanza(INF)</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-13.glb" alt="Modelo 3D del proyecto 13" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 14 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">14</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Elaboracion de Vitaminas</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank">Medicina</div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Decimo 10°/Informatica/BCH</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Emilia Martinez - Marie Strever - Ruth Avila - Nahum Zelaya - Alma Funez - Ceyri Ramos</div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-14.glb" alt="Modelo 3D del proyecto 14" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry" role="button" tabindex="0" aria-label="Ver el proyecto N.º 15 en detalle">
+        <span class="entry-hint" aria-hidden="true">Ver proyecto →</span>
+        <div>
+          <div class="entry-badge"><span class="entry-badge-num">15</span></div>
+          <span class="entry-number-label">Proyecto</span>
+          <div class="entry-photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3h6M10 3v5.5L4.5 18a1.5 1.5 0 0 0 1.3 2.3h12.4a1.5 1.5 0 0 0 1.3-2.3L14 8.5V3"/></svg>
+            <span>Fotografía o diagrama</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="entry-title">Bolsas Biodegradables</h3>
+          <div class="field-row">
+            <div class="field">
+              <span class="field-label">Categoría</span>
+              <div class="field-blank"></div>
+            </div>
+            <div class="field">
+              <span class="field-label">Grado / Grupo</span>
+              <div class="field-blank">Bioquimica</div>
+            </div>
+          </div>
+          <div class="field-row summary-lines" style="flex-direction:column; gap:0;">
+            <span class="field-label">Resumen</span>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+            <div class="field-blank"></div>
+          </div>
+          <div class="field entry-members">
+            <span class="field-label">Integrantes</span>
+            <div class="field-blank">Luis Trias - bayron Acosta - Gabriel Melendez - Donelly valerio - Diego </div>
+          </div>
+          <div class="field entry-3d">
+            <span class="field-label">Modelo 3D</span>
+            <model-viewer src="modelos/grupo-15.glb" alt="Modelo 3D del proyecto 15" camera-controls auto-rotate style="width:100%; height:220px; background:var(--accent-tint); border:1px solid var(--rule-strong);"></model-viewer>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <div class="focus-overlay" id="focusOverlay" aria-hidden="true">
+    <div class="focus-panel" role="dialog" aria-modal="true" aria-label="Detalle del proyecto">
+      <button class="focus-close" id="focusClose" type="button">← Volver al programa</button>
+      <p class="eyebrow focus-eyebrow">Ficha del proyecto</p>
+      <div class="focus-content" id="focusContent"></div>
+    </div>
+  </div>
+
+  </div>
+
+<script>
+(function(){
+  var portada = document.getElementById('portada');
+  var sitio = document.getElementById('sitio');
+  var btnEntrar = document.getElementById('btnEntrar');
+  btnEntrar.addEventListener('click', function(){
+    portada.classList.add('oculto');
+    sitio.classList.remove('oculto');
+  });
+
+  var entries = document.querySelectorAll('.entry');
+  var overlay = document.getElementById('focusOverlay');
+  var content = document.getElementById('focusContent');
+  var closeBtn = document.getElementById('focusClose');
+  var nav = document.getElementById('siteNav');
+  var lastFocused = null;
+  var lockedScrollY = 0;
+
+  // Bloqueo de scroll robusto (evita el rebote de fondo en Safari de iOS)
+  function lockScroll(){
+    lockedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.position = 'fixed';
+    document.body.style.top = (-lockedScrollY) + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+  function unlockScroll(){
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, lockedScrollY);
+  }
+
+  function openFocus(entry){
+    lastFocused = entry;
+    content.innerHTML = '';
+    var clone = entry.cloneNode(true);
+    clone.classList.remove('entry');
+    clone.classList.add('focus-entry');
+    clone.removeAttribute('tabindex');
+    clone.removeAttribute('role');
+    clone.removeAttribute('aria-label');
+    content.appendChild(clone);
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    lockScroll();
+    closeBtn.focus();
+  }
+
+  function closeFocus(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    unlockScroll();
+    if (lastFocused) { lastFocused.focus(); }
+  }
+
+  entries.forEach(function(entry){
+    entry.addEventListener('click', function(){ openFocus(entry); });
+    entry.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFocus(entry);
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeFocus);
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) { closeFocus(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeFocus(); }
+    if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); }
+  });
+
+  // Revelado progresivo de los apartados al hacer scroll
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    entries.forEach(function(e){ e.classList.add('in-view'); });
+  } else {
+    var io = new IntersectionObserver(function(items){
+      items.forEach(function(item){
+        if (item.isIntersecting) {
+          item.target.classList.add('in-view');
+          io.unobserve(item.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    entries.forEach(function(e){ io.observe(e); });
+  }
+
+  // Sombra en la barra de navegación al hacer scroll
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 8) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
